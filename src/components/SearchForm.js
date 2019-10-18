@@ -3,7 +3,7 @@ import axios from "axios";
 import {Form,Field,withFormik} from "formik";
 import CharacterCard from "./CharacterCard";
 
-function SearchForm({values}) {
+function SearchForm(){
 
   const [characters,setCharacters]= useState([]);
 
@@ -16,37 +16,44 @@ function SearchForm({values}) {
       setCharacters(res.data.results);
     })
   }, []);
- 
-  return (
-    <section className="search-form">
 
-        <Form className = "formy">
-                
-                <label>
-                    Name:
-                    <Field className="inputs" type="text" name="name" placeholder="enter your name"/>
-                </label>
-                
-                <button type="submit">Submit</button>
-        </Form>
-    
-    </section>
+  const names = []
+
+  characters.forEach(char=>{
+    names.push(char.name);
+  })
+
+  
+
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const handleChange = event => {
+    setSearchTerm(event.target.value);
+  };
+
+  useState(() => {
+    const results = names.filter(name =>
+      name.toLowerCase().includes(searchTerm)
+    );
+    setSearchResults(results);
+  }, [searchTerm]);
+
+  console.log('result', searchTerm)
+
+  return (
+    <div className="yeet">
+      <input
+        type="text"
+        placeholder="Search"
+        // value={searchTerm}
+      />
+      <button onClick={handleChange}>Search!</button>
+      <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+      </ul>
+    </div>
   );
 }
 
-const RenderForm = withFormik({
-
-  mapPropsToValues({name}){
-    return{
-      name: name || ''
-    }
-  },
-
-  handleSubmit(values,{characters}){
-    console.log(values);
-  
-  }
-
-})(SearchForm)
-
-export default RenderForm;
+export default SearchForm;
