@@ -13,9 +13,10 @@ export default function App() {
       <Header/>
       <Route path = "/characters" component={CharacterList}/>
       <Route path= "/" component={Welcomepage}/>
-      <Link to="/characters">Characters</Link>
+      <Link to="/characters">All Characters</Link>
+      <Link to = "/search">Search Characters</Link>
       <Route path = "/search" component={SearchForm}/>
-      <Link to = "/search">Search</Link>
+      
     </main>
   );
 }
