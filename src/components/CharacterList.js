@@ -8,19 +8,29 @@ import Welcomepage from "./WelcomePage";
 
 
 export default function CharacterList() {
-  const [characters,setCharacters]= useState([]);
+  
+  const [data,setData]= useState([]);
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     // TODO: Add API Request here - must run in `useEffect`
     //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
     axios.get('https://rickandmortyapi.com/api/character/')
     .then((res)=>{
-      console.log(res.data.results);
-      setCharacters(res.data.results);
+      const character = res.data.results.filter(character=>{
+        return character.name.toLowerCase().includes(query.toLowerCase())
+      });
+      console.log("characters:", res.data.results);
+      setData(character)
     })
-  }, []);
+  }, [query]);
 
-  if(characters.length==0){
+
+  const handleInputChange = e =>{
+    setQuery(e.target.value);
+  }
+
+  if(data.length==0){
     return(
       <div>
         <Spinner color="primary"/>
@@ -31,13 +41,17 @@ export default function CharacterList() {
   
 
   return (
+
     <div>
-      {/* <Link to="/characters/test">Search</Link>
       <div>
-        <Route path ="/characters/test" component={SearchForm}/>
-      </div> */}
+        <Link to ="/">Home</Link>
+      </div>
+      <div>
+        <Route exact path="/" component= {Welcomepage}/>
+      </div>
+      <SearchForm query = {query} funct = {handleInputChange}/>
       <section className="character-list">
-        {characters.map((char,index)=>(
+        {data.map((char,index)=>(
           <CharacterCard key = {index} img = {char.image} name={char.name} spec ={char.species} gender ={char.gender} status={char.status}/>
         ))}
       </section>
