@@ -16,7 +16,6 @@ export default function App() {
       <StyledCenter>
         <Link to="/characters">All Characters</Link>
       </StyledCenter>
-      
     </main>
   );
 }
