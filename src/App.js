@@ -4,15 +4,18 @@ import Welcomepage from "./components/WelcomePage";
 import {Route,Link} from "react-router-dom";
 import CharacterList from "./components/CharacterList";
 import { BrowserRouter } from "react-router-dom/cjs/react-router-dom.min";
+import SearchForm from "./components/SearchForm";
 
 
 export default function App() {
   return (
     <main>
       <Header/>
-      <Route exact path="/" component={Welcomepage}/>
       <Route path = "/characters" component={CharacterList}/>
+      <Route path= "/" component={Welcomepage}/>
       <Link to="/characters">Characters</Link>
+      <Route path = "/search" component={SearchForm}/>
+      <Link to = "/search">Search</Link>
     </main>
   );
 }
