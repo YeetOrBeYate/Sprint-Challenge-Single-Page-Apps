@@ -5,6 +5,7 @@ import CharacterCard from "./CharacterCard";
 import SearchForm from "./SearchForm";
 import {Route, Link} from "react-router-dom";
 import Welcomepage from "./WelcomePage";
+import StyledCenter from "./styled";
 
 
 export default function CharacterList() {
@@ -43,9 +44,9 @@ export default function CharacterList() {
   return (
 
     <div>
-      <div>
+      <StyledCenter>
         <Link to ="/">Home</Link>
-      </div>
+      </StyledCenter>
       <div>
         <Route exact path="/" component= {Welcomepage}/>
       </div>

@@ -4,8 +4,8 @@ import {Card,CardImg,CardBody,CardTitle,CardSubtitle,} from "reactstrap";
 
 export default function CharacterCard(props) {
   return (
-    <div className="" key={props.key}>
-      <Card>
+    <div  key={props.key}>
+      <Card className="cardy" >
         <img className = "bruh" src={props.img} alt="Card image cap" />
         <CardBody>
             <CardTitle>Name:{props.name}</CardTitle>

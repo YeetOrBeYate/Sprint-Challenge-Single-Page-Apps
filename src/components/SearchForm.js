@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {Form,Field,withFormik} from "formik";
-import CharacterCard from "./CharacterCard";
+import CharacterCard from "./CharacterCard"; 
+import StyledCenter from "./styled";
 
 function SearchForm(props){
 
   return (
-    <div>
+    <StyledCenter>
       <form className="search">
         <input
           type="text"
@@ -19,7 +20,7 @@ function SearchForm(props){
           autoComplete="off"
         />
       </form>
-    </div>
+    </StyledCenter>
   );
 }
 

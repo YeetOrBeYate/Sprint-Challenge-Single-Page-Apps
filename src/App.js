@@ -4,7 +4,7 @@ import Welcomepage from "./components/WelcomePage";
 import {Route,Link} from "react-router-dom";
 import CharacterList from "./components/CharacterList";
 import { BrowserRouter } from "react-router-dom/cjs/react-router-dom.min";
-import SearchForm from "./components/SearchForm";
+import StyledCenter from "./components/styled";
 
 
 export default function App() {
@@ -13,7 +13,10 @@ export default function App() {
       <Header/>
       <Route path = "/characters" component={CharacterList}/>
       <Route exact path= "/" component={Welcomepage}/>
-      <Link to="/characters">All Characters</Link>
+      <StyledCenter>
+        <Link to="/characters">All Characters</Link>
+      </StyledCenter>
+      
     </main>
   );
 }
