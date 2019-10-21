@@ -27,7 +27,7 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ]  Explain benefit(s) using `client-side routing`?
 
-> Answer:
+-It allows you the ability to render and re-render site content without reloading the page or sending multopl ere quests to a server. In addition to better performance, it prevents users from accessing files you dont want them to when you'd normally have a public folder full of HTML pages they could access by adjusting the url. 
 
 ## Project Set Up
 
